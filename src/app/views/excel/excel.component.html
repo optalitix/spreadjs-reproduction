@@ -1,0 +1,96 @@
+<div class="box">
+  <nav class="header navbar navbar-expand-lg navbar-light bg-white static-top">
+    <div class="container-fluid">
+      <div>
+        <a class="navbar-brand" [routerLink]="['/']">
+          <img src="https://portal.acumen.ai/Service/Logo/Padinmotion" />         
+        </a>            
+      </div>      
+      <input type="text" class="title-model" [(ngModel)]="modelName" />
+      <div *ngIf="excelGrid.loadedData">
+        <div>
+          <button id="btnUpload" class="btn btn-success" style="float: right;" type="button" [disabled]="loadingModel" (click)="uploadModelRequest(mymodal)">
+            Save <i class="fa fa-check" aria-hidden="true"></i>
+            <span *ngIf="loadingModel" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          </button>         
+          <button id="btnCancel" class="btn btn-danger" style="float: right; margin-right: 10px;" type="button" [disabled]="loadingModel" (click)="leave()">
+            Cancel <i class="fa fa-close" aria-hidden="true"></i>
+          </button>          
+        </div>
+      </div>      
+      <div id="testDiv" *ngIf="isDev">
+        <input id="textCell" type="text" [(ngModel)]="cellCoordinate" />
+        <input id="textDirection" type="text" [(ngModel)]="cellDirection" />
+        <button id="btnSelect" type="button" (click)="simulateRightClick()">OK</button>
+      </div>
+    </div>
+  </nav>
+  <div class="content container-fluid">
+    <div class="center" *ngIf="!excelGrid.loadedData">
+      <ngx-file-drop [disabled]="excelGrid.loadingData" dropZoneLabel="Drop files here" (onFileDrop)="fileDropped($event)"
+        (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)" [multiple]="false"
+        accept=".xls,.xlsx" dropZoneClassName="drag-drop-container">
+        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+          <div class="row">
+            <div class="col-12 mt-5 text-center">
+              <h3>Excel Interactive</h3>
+              <p *ngIf="!excelGrid.loadingData" class="lead">
+                Drag and drop excel file here.
+              </p>
+            </div>
+            <div class="col-12 text-center mb-5">
+              <spinner *ngIf="excelGrid.loadingData"></spinner>
+              <p *ngIf="!excelGrid.loadingData" class="text-muted">
+                or
+              </p>
+              <button *ngIf="!excelGrid.loadingData" type="button" class="btn btn-primary btn-file btn-lg border-0" (click)="openFileSelector()"
+              style="background-color: #8CA3AE;">Browse File</button>
+            </div>
+          </div>
+        </ng-template>
+      </ngx-file-drop>
+    </div>
+    <div id="main-container" class="row" style="height: 100%;"
+      [style.visibility]="!excelGrid.loadedData ? 'hidden' : ''">
+      <as-split direction="horizontal" (dragEnd)="dragEnd('pixel', $event)" (dragStart)="dragStart('pixel', $event)"
+        [gutterSize]="7" unit="pixel">
+        <as-split-area [size]="250" [minSize]="100" [maxSize]="500">
+          <div style="height: 100%;">
+            <app-inputlist #inputsListComponent [title]="'inputs'" (deletedCell)="onCellRemoved($event)">
+            </app-inputlist>
+          </div>
+        </as-split-area>
+        <as-split-area [size]="" [minSize]="200" [maxSize]="800">
+          <div style="height: 100%;">
+            <excel-grapecity #excelGrid (selectedCell)="onSelectedCell($event)" (workbookReady)="onWorkbookReady()" style="height: 100%;"></excel-grapecity>
+          </div>
+        </as-split-area>
+        <as-split-area [size]="250" [minSize]="100" [maxSize]="500">
+          <div style="height: 100%;">
+            <app-inputlist #outputsListComponent [title]="'outputs'" (deletedCell)="onCellRemoved($event)">
+            </app-inputlist>
+          </div>
+        </as-split-area>
+      </as-split>
+    </div>
+  </div>
+</div>
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Are you sure you want to publish?</h4>
+      <button type="button" class="btn" aria-label="Close" (click)="modal.dismiss('Cancel')">
+          <span style="color: grey;" aria-hidden="true">×</span>
+      </button>
+  </div>
+  <div class="modal-body">     
+      <div class="form-group">
+        <label>Note: After publishing no further changes can be made to this version.</label>
+        <label for="description">Version comment&nbsp;<span style="font-size: smaller;">(required)</span></label>
+        <textarea class="form-control" id="description" [ngModel]="description" (ngModelChange)="onDescriptionChange($event)" rows="3"></textarea>
+      </div>
+  </div>
+  <div class="modal-footer">       
+      <button type="button" class="btn btn-secondary mr-auto" (click)="modal.dismiss('Cancel')">Cancel</button>     
+      <button type="button" [disabled]="!descriptionOk" class="btn btn-primary" (click)="modal.close('Save')">Yes</button>
+  </div>
+</ng-template>

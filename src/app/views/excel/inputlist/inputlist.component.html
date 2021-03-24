@@ -1,0 +1,33 @@
+<div class="header">
+  <span class="action-header">{{list?.length > 0 ? ("Selected "+title): ("Select "+title)}}</span>
+</div>
+<div class="input-list scroll1">
+    <ul>            
+        <li [attr.data-key]="input.data.name" *ngFor="let input of enrichInputs(list);" (click)="open(mymodal, input.data)" [attr.data-error]="errors[input.data.name]"
+            [ngClass]="{'expanded': false, 'group': true, 'model' : true}">
+          <p class="title" [style.padding-left]="input.meta.padding">
+            <button class="btn btn-danger" (click)="removeItem(input.data)">-</button>
+            {{input.meta.name}}
+            <span [ngClass]="input.data.type.toLowerCase()" [attr.data-definition]="serialize(input.data)" [attr.data-error]="errors[input.data.name]"></span>
+          </p>                  
+        </li>
+    </ul>
+</div>
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{selectedItem.name}}</h4>
+        <button type="button" class="btn" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span style="color: grey;" aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">        
+        <form id="overwriteForm" [formGroup]="form">
+            <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>           
+        </form>
+    </div>
+    <div class="modal-footer">       
+        <button type="button" class="btn btn-secondary mr-auto" (click)="modal.dismiss('Cross click')">Cancel</button>
+        <button type="button" class="btn btn-danger mr-auto" (click)="removeItem(selectedItem);modal.dismiss('Cross click')">Delete</button>
+        <button type="submit" class="btn btn-primary" (click)="onCellDataUpdate();modal.close('Save click')">Ok</button>
+    </div>
+</ng-template>

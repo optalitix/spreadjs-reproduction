@@ -1,0 +1,27 @@
+{
+  "logLevel": "debug",
+  "api": {
+    "local": {
+      "endpoint": "http://localhost:58231",
+      "upsert": "models",
+      "list": "models/{id}",
+      "session": "models/{id}/Session",
+      "execute": "models/{id}/execute",
+      "redirect": "/execution/{id}",
+      "cancel": "/"
+    },
+    "acumen": {
+      "endpoint": null,
+      "upsert": "Modelling/Model/UpsertWorksheetModel",
+      "session": "api/Models/{id}/Session",
+      "list": "Modelling/Model/GetWorkbookModel/{id}",
+      "file": "Modelling/Model/GetWorkbook/{id}",
+      "execute": "api/Models/{id}/Calculations",
+      "redirect": "/Modelling/Execution/Detail/{id}",
+      "cancel": "/Modelling/Execution/Index",
+      "requestLog": "api/Model/Execute/{id}",
+      "requestLogDetail": "/Console/Request/Detail/{id}"
+    }
+  },
+  "version": "0.0.0.0"
+}

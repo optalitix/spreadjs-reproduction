@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Logger } from 'src/app/core/service/Logger';
-import { RuntimeConfiguration } from 'src/app/core/configuration/RuntimeConfiguration';
+import { Logger } from '../../../core/service/Logger';
+import { RuntimeConfiguration } from '../../../core/configuration/RuntimeConfiguration';
 import { InputlistComponent } from './inputlist.component';
 
 describe('InputlistComponent', () => {

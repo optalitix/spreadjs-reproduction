@@ -7,7 +7,7 @@ import { Logger } from '../../core/service/Logger';
 import { NotifyService } from '../../core/service/NotifyService';
 import { ModelService } from '../../core/service/ModelService';
 import { InvalidModelError } from '../../core/service/ModelErrors';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 import { ExcelGridComponent } from '../../components/excelGrid/excelGridComponent';
 import { InputType, SelectedCellEvent } from '../../components/excelGrid/selectedCellEvent';
 import { InputlistComponent } from './inputlist/inputlist.component';

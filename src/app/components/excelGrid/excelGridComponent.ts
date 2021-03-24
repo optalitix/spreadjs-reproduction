@@ -1,6 +1,5 @@
 import { EventEmitter } from '@angular/core';
-import { InputDefinition } from 'src/app/core/model/inputDefinition';
-import { ModelDefinition } from 'src/app/core/model/ModelFile';
+import { ModelDefinition } from '../../core/model/ModelFile';
 import { SelectedCellEvent, InputType } from './selectedCellEvent';
 
 export abstract class ExcelGridComponent {

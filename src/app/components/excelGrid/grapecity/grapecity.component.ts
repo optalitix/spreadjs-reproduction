@@ -1,13 +1,13 @@
 import { Component, OnInit, EventEmitter, Output, Input, ViewChild } from '@angular/core';
 import { SelectedCellEvent, InputType } from '../selectedCellEvent';
 import { ExcelGridComponent } from '../excelGridComponent';
-import { InputDefinition } from 'src/app/core/model/inputDefinition';
-import { RuntimeConfiguration } from 'src/app/core/configuration/RuntimeConfiguration';
+import { InputDefinition } from '../../../core/model/inputDefinition';
+import { RuntimeConfiguration } from '../../../core/configuration/RuntimeConfiguration';
 import * as ExcelIO from '@grapecity/spread-excelio';
 import * as XLSX from 'xlsx';
-import { Logger } from 'src/app/core/service/Logger';
+import { Logger } from '../../../core/service/Logger';
 import * as GC from '@grapecity/spread-sheets';
-import { ModelDefinition } from 'src/app/core/model/ModelFile';
+import { ModelDefinition } from '../../../core/model/ModelFile';
 import { InputCellTypeHelper } from './InputCellTypeHelper';
 import '@grapecity/spread-sheets-charts';
 

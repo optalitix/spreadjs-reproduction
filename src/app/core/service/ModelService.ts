@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Logger } from 'src/app/core/service/Logger';
+import { Logger } from '../../core/service/Logger';
 import { ModelFile, ModelDefinition } from '../model/ModelFile'
 import { RuntimeConfiguration } from '../configuration/RuntimeConfiguration';
 import { InvalidModelError, UnexpectedModelError } from './ModelErrors';

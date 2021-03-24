@@ -1,12 +1,12 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InputDefinition } from 'src/app/core/model/inputDefinition';
-import { ModelDefinition } from 'src/app/core/model/ModelFile';
-import { Logger } from 'src/app/core/service/Logger';
-import { NotifyService } from 'src/app/core/service/NotifyService';
-import { ModelService } from 'src/app/core/service/ModelService';
-import { InvalidModelError } from 'src/app/core/service/ModelErrors';
+import { InputDefinition } from '../../core/model/inputDefinition';
+import { ModelDefinition } from '../../core/model/ModelFile';
+import { Logger } from '../../core/service/Logger';
+import { NotifyService } from '../../core/service/NotifyService';
+import { ModelService } from '../../core/service/ModelService';
+import { InvalidModelError } from '../../core/service/ModelErrors';
 import { environment } from 'src/environments/environment';
 import { ExcelGridComponent } from '../../components/excelGrid/excelGridComponent';
 import { InputType, SelectedCellEvent } from '../../components/excelGrid/selectedCellEvent';

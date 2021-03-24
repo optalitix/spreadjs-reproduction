@@ -20,20 +20,12 @@ import { ExcelComponent } from './views/excel/excel.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { GrapeCityComponent } from './components/excelGrid/grapecity/grapecity.component';
 import { InputlistComponent } from './views/excel/inputlist/inputlist.component';
-import { ExecutionComponent } from './views/execution/execution.component';
-import { InputsformComponent } from './views/execution/inputsform/inputsform.component';
-import { RawformComponent } from './views/execution/rawform/rawform.component';
-import { FormComponent } from './views/form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputlistComponent,
-    InputsformComponent,
-    RawformComponent,
     ExcelComponent,
-    ExecutionComponent,
-    FormComponent,
     GrapeCityComponent,
     ArrayTypeComponent,
     SpinnerComponent

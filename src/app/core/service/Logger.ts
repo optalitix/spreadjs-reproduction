@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RuntimeConfiguration } from 'src/app/core/configuration/RuntimeConfiguration';
+import { RuntimeConfiguration } from '../../core/configuration/RuntimeConfiguration';
 
 const noop = (): any => undefined;
 

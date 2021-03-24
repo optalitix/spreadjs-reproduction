@@ -1,4 +1,4 @@
-import { InputDefinition } from 'src/app/core/model/inputDefinition'
+import { InputDefinition } from '../../core/model/inputDefinition'
 
 export enum InputType {
   in,

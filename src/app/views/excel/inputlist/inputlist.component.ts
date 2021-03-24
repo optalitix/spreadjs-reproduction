@@ -1,9 +1,9 @@
-import { Component, Input, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { InputDefinition } from 'src/app/core/model/inputDefinition'
-import { Logger } from 'src/app/core/service/Logger'
+import { InputDefinition } from '../../../core/model/inputDefinition'
+import { Logger } from '../../../core/service/Logger'
 
 @Component({
   selector: 'app-inputlist',

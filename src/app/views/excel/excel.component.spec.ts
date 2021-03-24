@@ -4,9 +4,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ExcelComponent } from './excel.component';
 import { InputlistComponent } from './inputlist/inputlist.component';
 import { GrapeCityComponent } from '../../components/excelGrid/grapecity/grapecity.component'
-import { Logger } from 'src/app/core/service/Logger';
-import { NotifyService } from 'src/app/core/service/NotifyService';
-import { RuntimeConfiguration } from 'src/app/core/configuration/RuntimeConfiguration';
+import { Logger } from '../../core/service/Logger';
+import { NotifyService } from '../../core/service/NotifyService';
+import { RuntimeConfiguration } from '../../core/configuration/RuntimeConfiguration';
 import { ToasterService } from 'angular2-toaster';
 
 describe('ExcelComponent', () => {
